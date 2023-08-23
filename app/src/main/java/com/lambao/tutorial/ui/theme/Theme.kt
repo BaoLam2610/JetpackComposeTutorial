@@ -68,3 +68,12 @@ fun TutorialTheme(
         content = content
     )
 }
+
+@Composable
+fun MeditationTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+    MaterialTheme(
+        typography = Typography,
+        shapes = Shapes,
+        content = content
+    )
+}
