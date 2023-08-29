@@ -1,27 +1,60 @@
 package com.lambao.tutorial
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import kotlinx.coroutines.delay
+import androidx.compose.runtime.Composable
+import com.lambao.tutorial.demo.Demo1
+import com.lambao.tutorial.demo.KeyboardAction
+import com.lambao.tutorial.demo.LaunchedEffectDemo
+import com.lambao.tutorial.demo.NetworkStatus
+import com.lambao.tutorial.demo.TimerScreen
 
 class MainActivity : ComponentActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val text by remember {
-                mutableStateOf("")
-            }
-            LaunchedEffect(key1 = text) {
-                delay(1000)
-                Log.d("lamnb", "This is: $text")
-            }
+//            demoLaunchedEffect()
+//            demoRememberUpdatedState()
+//            demoCoroutineScope()
+            demoDisposableEffect()
         }
     }
+
+
 }
+
+@Composable
+fun demoLaunchedEffect() {
+    LaunchedEffectDemo()
+}
+
+@Composable
+fun demoRememberUpdatedState() {
+    // DEMO 1
+    Demo1()
+
+    // DEMO 2
+//    RememberUpdatedStateDemo2()
+
+    // DEMO 3
+//    ShowToast(useRememberUpdatedState = true, message = {
+//        "Lam la tui"
+//    })
+}
+
+@Composable
+fun demoCoroutineScope() {
+    TimerScreen()
+}
+
+@Composable
+fun demoDisposableEffect() {
+//    PlayMusic()
+//    KeyboardAction()
+    NetworkStatus()
+}
+
+const val TAG = "lamnb"
