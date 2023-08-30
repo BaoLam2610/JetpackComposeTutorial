@@ -62,7 +62,7 @@ fun ProfileScreen() {
             .background(Color.White)
 
     ) {
-        TopBar(name = "lam_la_tui", modifier = Modifier.padding(top = 10.dp))
+        TopBar(name = "lam_la_tui", modifier = Modifier.padding(top = 10.dp).padding(horizontal = 20.dp))
         Spacer(modifier = Modifier.height(10.dp))
         ProfileSection()
         Spacer(modifier = Modifier.height(20.dp))
@@ -117,7 +117,7 @@ fun TopBar(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth()
     ) {
         Icon(
@@ -153,6 +153,7 @@ fun ProfileSection(
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
@@ -162,11 +163,11 @@ fun ProfileSection(
                 image = painterResource(id = R.drawable.avatar),
                 modifier = Modifier
                     .size(100.dp)
-                    .weight(3f)
             )
             Spacer(modifier = Modifier.width(16.dp))
-            StatSection(modifier = Modifier.weight(7f))
+            StatSection(modifier = Modifier.fillMaxWidth())
         }
+        Spacer(modifier = Modifier.height(16.dp))
         ProfileDescription(
             displayName = "Lam La Tui",
             description = "tui la Lam, tui den tu Pha Lai - Chi Linh - Hai Duong, tui rat dep trai",
