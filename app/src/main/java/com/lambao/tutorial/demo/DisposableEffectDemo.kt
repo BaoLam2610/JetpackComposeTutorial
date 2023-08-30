@@ -8,6 +8,8 @@ import android.media.MediaPlayer
 import android.net.ConnectivityManager
 import android.util.Log
 import android.view.ViewTreeObserver
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -69,7 +71,8 @@ fun NetworkStatus() {
         val intentFilter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         val broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val connectivityManager =
+                    context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 val networkInfo = connectivityManager.activeNetworkInfo
                 isConnected = networkInfo != null && networkInfo.isConnected
             }
@@ -81,4 +84,24 @@ fun NetworkStatus() {
     }
 
     Text(text = if (isConnected) "Connected" else "Not connected")
+}
+
+/* DEMO 4 */
+@Composable
+fun HandleBackPress(backPressedDispatcher: OnBackPressedDispatcher) {
+    val callback = remember {
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do something
+                Log.d(TAG, "Clicked back press")
+            }
+        }
+    }
+
+    DisposableEffect(key1 = backPressedDispatcher) {
+        backPressedDispatcher.addCallback(callback)
+        onDispose {
+            callback.remove()
+        }
+    }
 }

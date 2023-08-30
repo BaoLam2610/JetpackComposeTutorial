@@ -39,6 +39,7 @@ fun Demo1() {
         RememberUpdatedStateDemo(state)
     }
 }
+
 @Composable
 fun RememberUpdatedStateDemo(
     onTimeout: () -> Unit
@@ -82,7 +83,6 @@ fun RememberUpdatedStateDemo2() {
         OutlinedButton(
             onClick = {
                 myInput++
-
             }
         ) {
             Text("Increase $myInput")
