@@ -1,5 +1,8 @@
 package com.lambao.tutorial
 
+import android.app.PendingIntent
+import android.content.Intent
+import android.net.Uri
 import android.os.Parcelable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,12 +25,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.TaskStackBuilder
 import com.lambao.tutorial.destinations.PostsScreenDestination
 import com.lambao.tutorial.destinations.ProfileScreenDestination
 import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.annotation.DeepLink
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.parcelize.Parcelize
@@ -95,17 +101,64 @@ fun ProfileScreen(
     )
 }
 
-@Destination
+@Destination(
+    deepLinks = [
+        DeepLink(
+            uriPattern = "https://baolam2610.com/{title}",
+            action = Intent.ACTION_VIEW
+        ),
+        DeepLink(
+            uriPattern = "https://baolam2610.com/things/{things}",
+            action = Intent.ACTION_VIEW
+        ),
+        DeepLink(
+            uriPattern = "https://baolam2610.com/waifu/{waifu}",
+            action = Intent.ACTION_VIEW
+        )
+    ]
+)
 @Composable
 fun PostsScreen(
-    title: String
+    title: String = "",
+    things: Things = Things(),
+    waifu: ArrayList<Waifu> = arrayListOf() // url/array/[shinobu %252C makima]
 ) {
-    Text(
-        text = title,
+    Column(
         modifier = Modifier.fillMaxSize(),
-        fontSize = 30.sp,
-        textAlign = TextAlign.Center
-    )
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = title,
+            fontSize = 30.sp,
+        )
+
+        Text(
+            text = "Things: $things",
+            fontSize = 30.sp,
+            modifier = Modifier.padding(30.dp)
+        )
+
+        Text(
+            text = "Waifu size: ${waifu.size}",
+            fontSize = 30.sp,
+            modifier = Modifier.padding(30.dp)
+        )
+        val context = LocalContext.current
+        Button(onClick = {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://baolam2610.com/HelloWorld"))
+            val pendingIntent = TaskStackBuilder.create(context).run {
+                addNextIntentWithParentStack(intent)
+                getPendingIntent(
+                    0,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            }
+            pendingIntent?.send()
+        }) {
+            Text(text = "Trigger Deeplink")
+        }
+    }
 }
 
 @Parcelize
