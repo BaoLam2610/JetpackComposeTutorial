@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val scope = rememberCoroutineScope()
+            /*val scope = rememberCoroutineScope()
             val drawerState = rememberDrawerState(DrawerValue.Closed)
             val items = listOf(Icons.Default.Close, Icons.Default.Clear, Icons.Default.Call)
             var selectedItem by remember { mutableStateOf(items[0]) }
@@ -79,7 +79,8 @@ class MainActivity : ComponentActivity() {
 
                     }
                 }
-            )
+            )*/
+            DrawerNavigationDemo()
         }
     }
 }
@@ -103,5 +104,4 @@ fun AppBar(
             }
         }
     )
-
 }
