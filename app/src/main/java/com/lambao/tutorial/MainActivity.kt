@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            Scaffold(
+            /*Scaffold(
                 bottomBar = {
                     BottomNavigationBar(
                         list = listOf(
@@ -77,6 +77,13 @@ class MainActivity : ComponentActivity() {
                 }
             ) {
                 Navigation(navController = navController)
+            }*/
+            Scaffold(
+                bottomBar = {
+                    NavigationBarDemo()
+                }
+            ) {
+
             }
         }
     }
