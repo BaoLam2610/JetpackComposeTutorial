@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.lambao.tutorial"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.lambao.tutorial"
@@ -66,4 +66,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
+    implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha12")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha12")
 }
