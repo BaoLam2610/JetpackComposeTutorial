@@ -25,7 +25,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.lambao.tutorial.R
+import com.lambao.tutorial.ui.theme.Beige
 import com.lambao.tutorial.ui.theme.OrangeRed
+import com.lambao.tutorial.ui.theme.OrangeYellow
 import com.lambao.tutorial.ui.theme.textStyle
 
 data class Product(
@@ -72,12 +74,13 @@ fun ProductItem(
                 Text(
                     text = product.rate.toString(),
                     style = MaterialTheme.textStyle.regular12,
-                    color = OrangeRed,
-                    modifier = Modifier.padding(end = 2.dp)
+                    color = Beige,
+                    modifier = Modifier.padding(end = 4.dp)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.star),
                     contentDescription = null,
+                    modifier = Modifier.size(12.dp)
                 )
             }
         }

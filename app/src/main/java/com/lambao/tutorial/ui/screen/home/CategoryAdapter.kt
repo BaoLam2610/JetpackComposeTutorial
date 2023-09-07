@@ -2,6 +2,7 @@ package com.lambao.tutorial.ui.screen.home
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,9 +17,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.lambao.tutorial.ui.theme.Background
 import com.lambao.tutorial.ui.theme.PlaceHolder
 import com.lambao.tutorial.ui.theme.spacing
 import com.lambao.tutorial.ui.theme.textStyle
@@ -38,6 +41,7 @@ fun CategoryItem(
             modifier = Modifier
                 .size(size)
                 .border(1.dp, color = PlaceHolder, shape = CircleShape)
+                .background(Background, CircleShape)
                 .clip(CircleShape),
             contentAlignment = Alignment.Center
         ) {

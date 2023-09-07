@@ -95,20 +95,18 @@ fun HomeScreen() {
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         PopularProductSection(
             products = listOf(
-                Product("PC 123123132", R.drawable.pic1, "123123123123", 23, 3f),
-                Product("PC 123123132", R.drawable.pic2, "123123123123", 23, 3f),
-                Product("PC 123123132", R.drawable.pic3, "123123123123", 23, 3f),
+                Product("MacBook Pro 13 M2 chip", R.drawable.pic1, "1600$", 26, 4.6f),
+                Product("Play Station 5", R.drawable.pic2, "999$", 10, 4.8f),
+                Product("IPhone 14 Promax", R.drawable.pic3, "899$", 20, 5.0f),
             )
         )
-        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
-
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         PopularProductSection(
             products = listOf(
-                Product("PC 123123132", R.drawable.pic1, "123123123123", 23, 3f),
-                Product("PC 123123132", R.drawable.pic2, "123123123123", 23, 3f),
-                Product("PC 123123132", R.drawable.pic3, "123123123123", 23, 3f),
+                Product("MacBook Pro 13 M2 chip", R.drawable.pic1, "1600$", 26, 4.6f),
+                Product("Play Station 5", R.drawable.pic2, "999$", 10, 4.8f),
+                Product("IPhone 14 Promax", R.drawable.pic3, "899$", 20, 5.0f),
             )
         )
         Spacer(modifier = Modifier.height(100.dp))
@@ -297,7 +295,7 @@ fun PopularProductSection(
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
-        Text(text = "Popular products", style = MaterialTheme.textStyle.bold18)
+        Text(text = "Popular product", style = MaterialTheme.textStyle.bold18)
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.normal))
         LazyRow(
             modifier = Modifier.fillMaxWidth()
