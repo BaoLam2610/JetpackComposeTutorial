@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -69,13 +68,10 @@ fun HomeScreen() {
             .padding(horizontal = MaterialTheme.spacing.extraMedium)
             .verticalScroll(scrollState)
     ) {
-
-
         GreetingSection(
             name = "Bao Lam",
             badgeCount = "9+"
         )
-
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         SearchSection(value = searchText) {
@@ -84,8 +80,6 @@ fun HomeScreen() {
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         BannerSection()
-
-
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         CategoriesSection(
@@ -98,7 +92,6 @@ fun HomeScreen() {
             )
         )
 
-
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
         PopularProductSection(
             products = listOf(
@@ -108,7 +101,6 @@ fun HomeScreen() {
             )
         )
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
-        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
 
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraNormal))
@@ -119,7 +111,7 @@ fun HomeScreen() {
                 Product("PC 123123132", R.drawable.pic3, "123123123123", 23, 3f),
             )
         )
-
+        Spacer(modifier = Modifier.height(100.dp))
     }
 }
 
@@ -305,13 +297,13 @@ fun PopularProductSection(
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
-        Text(text = "Explore popular categories", style = MaterialTheme.textStyle.bold18)
+        Text(text = "Popular products", style = MaterialTheme.textStyle.bold18)
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.normal))
         LazyRow(
             modifier = Modifier.fillMaxWidth()
         ) {
             items(products) { item ->
-                ProductItem(product = item, modifier = Modifier.fillMaxWidth())
+                ProductItem(product = item)
             }
         }
     }
