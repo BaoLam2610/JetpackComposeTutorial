@@ -1,4 +1,4 @@
-package com.lambao.tutorial.ui.theme
+package com.lambao.tutorial.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
