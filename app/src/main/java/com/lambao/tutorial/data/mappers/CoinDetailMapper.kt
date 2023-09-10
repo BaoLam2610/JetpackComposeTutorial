@@ -12,7 +12,7 @@ fun CoinDetailDto.toCoinDetail() = CoinDetail(
     symbol ?: "",
     rank ?: -1,
     isActive ?: false,
-    tags?.map { it.toString() } ?: listOf(),
+    tags?.map { it.name ?: "" } ?: listOf(),
     team?.map { it.toTeamMember() } ?: listOf()
 )
 

@@ -1,5 +1,9 @@
 package com.lambao.tutorial.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class CoinDetail(
     val id: String,
     val name: String,
@@ -9,4 +13,4 @@ data class CoinDetail(
     val isActive: Boolean,
     val tags: List<String>,
     val team: List<TeamMember>
-)
+) : Parcelable
