@@ -77,9 +77,6 @@ dependencies {
     // Constraint layout
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha12")
 
-    // Coil Compose
-    implementation("io.coil-kt:coil-compose:2.2.2")
-
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
@@ -89,7 +86,6 @@ dependencies {
     // Destinations Navigation
     implementation("io.github.raamcosta.compose-destinations:core:1.9.52")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.9.52")
-
 
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.48")
@@ -110,4 +106,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.room:room-paging:2.5.2")
+
+    // Open CSV
+    implementation("com.opencsv:opencsv:5.8")
 }
