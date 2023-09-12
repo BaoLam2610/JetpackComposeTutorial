@@ -1,9 +1,11 @@
 package com.lambao.tutorial.presentation.screen.coin.list
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.lambao.tutorial.common.JobRegistry
 import com.lambao.tutorial.common.Resource
 import com.lambao.tutorial.domain.model.Coin
 import com.lambao.tutorial.domain.use_case.GetCoinsUseCase
@@ -14,18 +16,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinListViewModel @Inject constructor(
-    private val getCoinsUseCase: GetCoinsUseCase
+    private val getCoinsUseCase: GetCoinsUseCase,
+    private val jobRegistry: JobRegistry
 ) : ViewModel() {
 
     private val _state = mutableStateOf(CoinListState())
     val state: State<CoinListState> get() = _state
 
     init {
-        getCoins()
+//        getCoins()
     }
 
-    private fun getCoins() {
-        getCoinsUseCase.invoke().onEach {
+    fun getCoins() {
+        val job = getCoinsUseCase.invoke().onEach {
             when (it) {
                 is Resource.Success -> {
                     _state.value = CoinListState(coins = it.data ?: emptyList())
@@ -40,6 +43,12 @@ class CoinListViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+        val index = jobRegistry.addJob(job)
+        Log.d("lamnb", "getCoins count: $index")
+    }
+
+    fun cancelJob() {
+        jobRegistry.cancelAll()
     }
 }
 
