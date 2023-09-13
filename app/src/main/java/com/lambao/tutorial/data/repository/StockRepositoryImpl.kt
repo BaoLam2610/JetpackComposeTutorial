@@ -4,6 +4,7 @@ import com.lambao.tutorial.common.Resource
 import com.lambao.tutorial.data.csv.CSVParser
 import com.lambao.tutorial.data.local.StockDatabase
 import com.lambao.tutorial.data.mappers.toCompanyListing
+import com.lambao.tutorial.data.mappers.toCompanyListingEntity
 import com.lambao.tutorial.data.remote.StockApi
 import com.lambao.tutorial.domain.model.CompanyListing
 import com.lambao.tutorial.domain.repository.StockRepository
@@ -43,8 +44,20 @@ class StockRepositoryImpl @Inject constructor(
                 companyListingParser.parse(response.byteStream())
             } catch (e: Exception) {
                 emit(Resource.Error("ERROR ERROR ERROR"))
+                null
             }
 
+            remoteListings?.let { listings ->
+                emit(Resource.Loading(false))
+                dao.clearCompanyListings()
+                dao.insertCompanyListings(
+                    listings.map { it.toCompanyListingEntity() }
+                )
+                emit(Resource.Success(
+                    dao.searchCompanyListing("")
+                        .map { it.toCompanyListing() }
+                ))
+            }
         }
     }
 }
