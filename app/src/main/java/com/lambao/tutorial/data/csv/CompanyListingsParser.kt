@@ -19,8 +19,8 @@ class CompanyListingsParser @Inject constructor(
                 .drop(1)
                 .mapNotNull { line ->
                     val symbol = line.getOrNull(0)
-                    val name = line.getOrNull(0)
-                    val exchange = line.getOrNull(0)
+                    val name = line.getOrNull(1)
+                    val exchange = line.getOrNull(2)
                     CompanyListing(
                         name ?: return@mapNotNull null,
                         symbol ?: return@mapNotNull null,

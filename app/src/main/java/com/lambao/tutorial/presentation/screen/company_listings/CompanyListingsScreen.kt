@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.lambao.tutorial.presentation.screen.destinations.CompanyInfoScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -62,18 +63,17 @@ fun CompanyListingsScreen(
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 itemsIndexed(state.companies) { index, item ->
-
                     CompanyItem(
                         company = item,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navigator.navigate(CompanyInfoScreenDestination(item.symbol))
                             }
                             .padding(16.dp)
                     )
 
-                    if(index < state.companies.size) {
+                    if (index < state.companies.size) {
                         Divider(modifier = Modifier.padding(horizontal = 16.dp))
                     }
                 }

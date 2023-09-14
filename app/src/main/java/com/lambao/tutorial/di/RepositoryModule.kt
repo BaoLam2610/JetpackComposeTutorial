@@ -2,8 +2,10 @@ package com.lambao.tutorial.di
 
 import com.lambao.tutorial.data.csv.CSVParser
 import com.lambao.tutorial.data.csv.CompanyListingsParser
+import com.lambao.tutorial.data.csv.IntradayInfoParser
 import com.lambao.tutorial.data.repository.StockRepositoryImpl
 import com.lambao.tutorial.domain.model.CompanyListing
+import com.lambao.tutorial.domain.model.IntradayInfo
 import com.lambao.tutorial.domain.repository.StockRepository
 import dagger.Binds
 import dagger.Module
@@ -20,6 +22,12 @@ abstract class RepositoryModule {
     abstract fun bindCompanyListingsParser(
         companyListingsParser: CompanyListingsParser
     ): CSVParser<CompanyListing>
+
+    @Binds
+    @Singleton
+    abstract fun bindIntradayInfoParser(
+        intradayInfoParser: IntradayInfoParser
+    ): CSVParser<IntradayInfo>
 
     @Binds
     @Singleton

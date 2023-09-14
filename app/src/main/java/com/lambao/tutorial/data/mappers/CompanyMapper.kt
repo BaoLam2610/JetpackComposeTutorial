@@ -19,7 +19,7 @@ fun CompanyListing.toCompanyListingEntity() =
         exchange = exchange
     )
 
-fun CompanyInfoDto.toCompany() : CompanyInfo {
+fun CompanyInfoDto.toCompanyInfo() : CompanyInfo {
     return CompanyInfo(
         symbol ?: "",
         description ?: "",
